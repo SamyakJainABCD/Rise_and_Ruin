@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://0mxpxhh3hb5p"]
+
+[ext_resource type="ArrayMesh" uid="uid://dnxn3vedysddi" path="res://assets/bugatti.obj" id="1_qqbde"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xatbs"]
+
+[node name="StaticBody3D" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_xatbs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+mesh = ExtResource("1_qqbde")
