@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dhm4iscehx77x"]
 
-[ext_resource type="Script" path="res://angrybird_missile/Fireball.gd" id="1_uqrdk"]
+[ext_resource type="Script" uid="uid://c7g3x77afr0dw" path="res://scenes/fireball/FireBall.gd" id="1_uqrdk"]
 [ext_resource type="Shader" uid="uid://m6l4slxe6utb" path="res://scenes/fireball/fireball_shader.tres" id="2_fdd6e"]
 [ext_resource type="ArrayMesh" uid="uid://bfotg8krkjlot" path="res://scenes/fireball/fireball_mesh.obj" id="3_qcqpa"]
 [ext_resource type="Shader" uid="uid://dww4aoopx6wvo" path="res://scenes/fireball/fireheader_shader.tres" id="4_q6txl"]
