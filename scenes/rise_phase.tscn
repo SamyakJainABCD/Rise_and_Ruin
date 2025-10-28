@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvry2v8ju4p7e"]
+
+[ext_resource type="PackedScene" uid="uid://f4nlykoxsvd6" path="res://scenes/background.tscn" id="1_bi5df"]
+[ext_resource type="PackedScene" uid="uid://dq1kp4xie48x3" path="res://scenes/player_for_rise.tscn" id="1_h75rx"]
+[ext_resource type="Material" uid="uid://cqm5dfe2bo42f" path="res://materials/preview_material.tres" id="2_bi5df"]
+
+[node name="main" type="Node3D"]
+
+[node name="bg" parent="." instance=ExtResource("1_bi5df")]
+
+[node name="player" parent="." instance=ExtResource("1_h75rx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1838756, 0)
+preview_material = ExtResource("2_bi5df")

@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2afpfg14m62d"]
+
+[ext_resource type="Script" uid="uid://busjnbli4finq" path="res://scripts/home_screen.gd" id="1_lapbl"]
+
+[node name="HomeScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lapbl")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 1058.0
+offset_bottom = 114.0
+text = "Rise & Ruin"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 479.0
+offset_top = 211.0
+offset_right = 582.0
+offset_bottom = 251.0
+
+[node name="MakeMatch" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Make Match"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="pressed" from="VBoxContainer/MakeMatch" to="." method="_on_make_match_pressed"]

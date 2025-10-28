@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://v1jbis5seu5i"]
+
+[ext_resource type="PackedScene" uid="uid://bgeo1bkind83w" path="res://assets/ghpc_9k111_fagot.glb" id="1_ut831"]
+
+[node name="launcher" type="Node3D"]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_ut831")]
+transform = Transform3D(-8.742278e-06, 0, 200, 0, 200, 0, -200, 0, -8.742278e-06, 0, 0, 0)
