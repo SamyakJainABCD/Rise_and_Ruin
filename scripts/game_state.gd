@@ -73,7 +73,7 @@ func fetch_opponent_data() -> void:
 
 
 # --- GENERAL HTTP RESPONSE HANDLER ---
-func _on_request_completed(result, response_code, headers, body):
+func _on_request_completed(_result, _response_code, _headers, body):
 	var json = JSON.new()
 	var err = json.parse(body.get_string_from_utf8())
 	if err != OK:

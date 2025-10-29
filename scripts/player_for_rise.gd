@@ -66,7 +66,7 @@ func _physics_process(delta):
 	handle_block_input()
 	update_preview_block()
 
-func handle_movement(delta: float) -> void:
+func handle_movement(_delta: float) -> void:
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
@@ -101,11 +101,11 @@ func handle_block_input():
 	if Input.is_action_just_pressed("place"):
 		if raycast.is_colliding():
 			if GameData.place_block(current_block_index): # GameData.place_block() spends the money and returns true if successful
-				var position = raycast.get_collision_point()
+				var pos = raycast.get_collision_point()
 				var block_scene = GameState.block_scenes[current_block_index]
 				var block_instance = block_scene.instantiate()
 				get_tree().current_scene.add_child(block_instance)
-				block_instance.global_transform.origin = position
+				block_instance.global_transform.origin = pos
 				placed_blocks.append(block_instance)
 				
 	if Input.is_action_just_pressed("break"):
