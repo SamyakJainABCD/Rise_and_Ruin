@@ -8,6 +8,16 @@ var opponent_id : String = ""
 var job : String = ""
 var finding_match: bool = false
 var opponent_block_list = []
+var highest_point_of_opponent_tower: float = 0
+
+var block_scenes := [
+	preload("res://scenes/blocks/block.tscn"),
+	preload("res://scenes/blocks/sphere.tscn"),
+	#preload("res://scenes/blocks/stairs.tscn"),
+	preload("res://scenes/blocks/pillars.tscn"),
+	preload("res://scenes/blocks/pyramid.tscn"),
+	preload("res://scenes/blocks/plank.tscn"),
+]
 
 func _ready():
 	randomize()
@@ -22,6 +32,7 @@ var current_request : int = RequestType.NONE
 var pending_payload : Dictionary = {}  # For sending data
 # --- FIND MATCH ---
 func find_match() -> void:
+	get_tree().change_scene_to_file("res://scenes/waiting.tscn")
 	current_request = RequestType.FIND_MATCH
 	var body = {"player_id": player_id}
 	var json_body = JSON.stringify(body)
@@ -29,15 +40,17 @@ func find_match() -> void:
 
 
 # --- SEND MATCH DATA ---
-func send_match_data(block_list) -> void:
+func send_match_data(payload) -> void:
 	if match_id == "":
 		print("No match yet!")
 		return
+	get_tree().change_scene_to_file("res://scenes/waiting.tscn")
 	current_request = RequestType.SEND_DATA
+			
 	var body = {
 		"player_id": player_id,
 		"match_id": match_id,
-		"payload": block_list,
+		"payload": payload,
 	}
 	var json_body = JSON.stringify(body)
 	http_request.request("http://127.0.0.1:8000/send_match_data/", [], HTTPClient.METHOD_POST, json_body)
@@ -48,6 +61,7 @@ func send_match_data(block_list) -> void:
 func fetch_opponent_data() -> void:
 	if match_id == "":
 		return
+	get_tree().change_scene_to_file("res://scenes/waiting.tscn")
 	current_request = RequestType.FETCH_DATA
 	var body = {
 		"player_id": player_id,
@@ -64,20 +78,18 @@ func _on_request_completed(result, response_code, headers, body):
 	var err = json.parse(body.get_string_from_utf8())
 	if err != OK:
 		print("Failed to parse response")
-		#return
+		return
 
 	var response = json.data  # <-- use .data, not .result
-	print(response)
-	print(current_request)
 	match current_request:
 		RequestType.FIND_MATCH:
 			handle_find_match_response(response)
 		RequestType.SEND_DATA:
-			print("fetcing from _on_request_completed")
+			print("fetcing from _on_request_completed1")
 			fetch_opponent_data()
 			# After sending data, immediately fetch opponent data
 		RequestType.FETCH_DATA:
-			print("fetched from _on_request_completed")
+			print("fetched from _on_request_completed2")
 			handle_fetch_data_response(response)
 
 	#current_request = RequestType.NONE
@@ -104,18 +116,32 @@ func handle_fetch_data_response(response: Dictionary) -> void:
 
 	if response.has("opponent_data") and response["opponent_data"] != null:
 		var raw_data = response["opponent_data"]
-		var parsed = []
-		for entry in raw_data:
-			var index = int(entry[0])
-			var transform_str = entry[1]
-			var transform = parse_transform3d_from_string(transform_str)
-			parsed.append([index, transform])
-		
-		opponent_block_list = parsed
-		print("Parsed opponent blocks:", parsed)
+		if typeof(raw_data)==TYPE_ARRAY:
+			if opponent_block_list: #changes made below must also be made here
+				await get_tree().create_timer(0.5).timeout
+				fetch_opponent_data()
+				return
+			var parsed = []
+			for entry in raw_data:
+				var index = int(entry[0])
+				var transform_str = entry[1]
+				var transform = parse_transform3d_from_string(transform_str)
+				parsed.append([index, transform])
+			
+			opponent_block_list = parsed
 
-		get_tree().change_scene_to_file("res://scenes/ruin_phase.tscn")
-	else:
+			get_tree().change_scene_to_file("res://scenes/ruin_phase.tscn")
+		else:
+			finding_match = false
+			player_id = str(randi())
+			GameData._ready()
+			var highest_point_of_self_tower = raw_data
+			if highest_point_of_opponent_tower > highest_point_of_self_tower:
+				get_tree().change_scene_to_file("res://scenes/you_lost.tscn")
+			else:
+				get_tree().change_scene_to_file("res://scenes/you_won.tscn")
+				
+	else: #changes made here must also be made above
 		await get_tree().create_timer(0.5).timeout
 		fetch_opponent_data()
 

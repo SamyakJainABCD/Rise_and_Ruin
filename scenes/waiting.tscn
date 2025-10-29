@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpikvqi2qk8k2"]
+
+[ext_resource type="Script" uid="uid://d4cqmwpd1udh0" path="res://scripts/waiting.gd" id="1_4tkn2"]
+
+[node name="waiting" type="Node2D"]
+script = ExtResource("1_4tkn2")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 478.0
+offset_top = 205.0
+offset_right = 548.0
+offset_bottom = 228.0
+text = "waiting..."

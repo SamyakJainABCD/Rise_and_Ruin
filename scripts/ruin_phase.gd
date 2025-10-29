@@ -1,18 +1,21 @@
 extends Node3D
 
-@onready var block_scenes := [
-	preload("res://scenes/blocks/block.tscn"),
-	preload("res://scenes/blocks/sphere.tscn"),
-	preload("res://scenes/blocks/stairs.tscn"),
-]
-
 var opponent_block_list: Array = []  # This is filled from server
 func _ready():
 	opponent_block_list = GameState.opponent_block_list
 	place_opponent_blocks()
+	
+	await get_tree().create_timer(5).timeout
+	var highest: float = 0
+	for block in get_children():
+		if block is RigidBody3D:
+			if block.position.y > highest:
+				highest = block.position.y
+	GameState.highest_point_of_opponent_tower = highest
+	GameState.send_match_data(highest)
 
 func place_opponent_blocks():
-	print(opponent_block_list)
+	print("placing blocks")
 	if opponent_block_list.is_empty():
 		print("No opponent blocks to place.")
 		return
@@ -21,12 +24,12 @@ func place_opponent_blocks():
 		var index = entry[0]
 		var transform = entry[1]
 		# Validate index
-		if index < 0 or index >= block_scenes.size():
+		if index < 0 or index >= GameState.block_scenes.size():
 			push_error("Invalid block index: %s" % index)
 			continue
 
 		# Instantiate and place
-		var block_scene = block_scenes[index]
+		var block_scene = GameState.block_scenes[index]
 		var instance = block_scene.instantiate()
 		instance.global_transform = transform
 		print("transform: ", Transform3D(transform.basis, transform.origin))

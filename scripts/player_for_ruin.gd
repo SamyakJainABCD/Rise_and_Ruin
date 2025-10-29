@@ -4,14 +4,9 @@ const SPEED = 8
 const JUMP_VELOCITY = 6
 const MOUSE_SENSITIVITY = 0.002
 
-var block_scenes := [
-	preload("res://scenes/blocks/block.tscn"),
-	 preload("res://scenes/blocks/sphere.tscn"),
-	 preload("res://scenes/blocks/stairs.tscn"),
-]
-
 var missile_scenes := [
-	preload("res://scenes/launcher.tscn")
+	#preload("res://scenes/launcher.tscn"),
+	preload("res://scenes/blocks/block.tscn"),
 ]
 
 var current_block_index := 0
@@ -61,7 +56,7 @@ func _physics_process(delta):
 	handle_block_input()
 	update_preview_block()
 
-func handle_movement(delta: float) -> void:
+func handle_movement(_delta: float) -> void:
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 

@@ -1,10 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8wb5aew0cv1m"]
+[gd_scene load_steps=6 format=3 uid="uid://jmessvja75ed"]
+
+[ext_resource type="Texture2D" uid="uid://bw53srv5ffpjd" path="res://assets/stone_pillar___3daily_2017_0.png" id="1_folon"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v31ww"]
+rough = true
+bounce = 0.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_c0rrr"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ef8d"]
+albedo_texture = ExtResource("1_folon")
+
 [sub_resource type="SphereMesh" id="SphereMesh_psy3e"]
+material = SubResource("StandardMaterial3D_8ef8d")
 
 [node name="StaticBody3D" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_v31ww")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

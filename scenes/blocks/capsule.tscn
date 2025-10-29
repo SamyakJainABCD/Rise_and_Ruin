@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bobgmptxivbip"]
+
+[ext_resource type="Texture2D" uid="uid://bgoqs57krqwls" path="res://scenes/ui/imgbin_7719aed94ff64fb00ba2ccd0fbfbca6f (1).png" id="1_mo6hh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mo6hh"]
+rough = true
+bounce = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hjml2"]
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l4r1v"]
+albedo_texture = ExtResource("1_mo6hh")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mo6hh"]
+material = SubResource("StandardMaterial3D_l4r1v")
+height = 1.0
+
+[node name="Capsule" type="Node3D"]
+
+[node name="RigidBody3D" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_mo6hh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_hjml2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CapsuleMesh_mo6hh")

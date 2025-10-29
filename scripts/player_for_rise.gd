@@ -4,11 +4,7 @@ const SPEED = 8
 const JUMP_VELOCITY = 6
 const MOUSE_SENSITIVITY = 0.002
 
-var block_scenes := [
-	preload("res://scenes/blocks/block.tscn"),
-	 preload("res://scenes/blocks/sphere.tscn"),
-	 preload("res://scenes/blocks/stairs.tscn"),
-]
+
 
 var current_block_index := 0
 var placed_blocks = []
@@ -33,8 +29,8 @@ func _ready():
 
 # Find which preload it matches
 		var index = -1
-		for i in range(block_scenes.size()):
-			if block_scenes[i].resource_path == instance_scene_path:
+		for i in range(GameState.block_scenes.size()):
+			if GameState.block_scenes[i].resource_path == instance_scene_path:
 				index = i
 				break
 		block_list.append([index, block.global_transform])
@@ -95,25 +91,38 @@ func handle_movement(delta: float) -> void:
 func handle_block_input():
 	# Scroll through blocks
 	if Input.is_action_just_pressed("ui_right"):
-		current_block_index = (current_block_index + 1) % block_scenes.size()
+		current_block_index = (current_block_index + 1) % GameState.block_scenes.size()
 		_create_preview_block()
 	elif Input.is_action_just_pressed("ui_left"):
-		current_block_index = (current_block_index - 1 + block_scenes.size()) % block_scenes.size()
+		current_block_index = (current_block_index - 1 + GameState.block_scenes.size()) % GameState.block_scenes.size()
 		_create_preview_block()
 
 	# Right-click to place block
 	if Input.is_action_just_pressed("place"):
 		if raycast.is_colliding():
-			var block_scene = block_scenes[current_block_index]
-			var block_instance = block_scene.instantiate()
-			get_tree().current_scene.add_child(block_instance)
-			block_instance.global_transform = preview_block.global_transform
-			placed_blocks.append(block_instance)
+			if GameData.place_block(current_block_index): # GameData.place_block() spends the money and returns true if successful
+				var position = raycast.get_collision_point()
+				var block_scene = GameState.block_scenes[current_block_index]
+				var block_instance = block_scene.instantiate()
+				get_tree().current_scene.add_child(block_instance)
+				block_instance.global_transform.origin = position
+				placed_blocks.append(block_instance)
+				
 	if Input.is_action_just_pressed("break"):
 		if raycast.is_colliding():
+			print("break1")
 			var collider = raycast.get_collider()
 			if collider and collider != preview_block:
+				print("break2")
 				if collider in placed_blocks:
+					var instance_scene_path = collider.scene_file_path
+					var index = -1
+					for i in range(GameState.block_scenes.size()):
+						if GameState.block_scenes[i].resource_path == instance_scene_path:
+							index = i
+							break
+					print("break3")
+					GameData.break_block(index)
 					placed_blocks.erase(collider)
 					collider.queue_free()
 
@@ -149,7 +158,7 @@ func _create_preview_block():
 		preview_block.queue_free()
 
 	# Instantiate the original block scene
-	var original_block = block_scenes[current_block_index].instantiate()
+	var original_block = GameState.block_scenes[current_block_index].instantiate()
 
 	# Create a new StaticBody3D as root for the preview
 	preview_block = StaticBody3D.new()

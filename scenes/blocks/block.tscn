@@ -1,11 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbed7ft3h6bhq"]
+[gd_scene load_steps=6 format=3 uid="uid://siejaqxwr350"]
+
+[ext_resource type="Texture2D" uid="uid://cvf6e8sak66ir" path="res://assets/library_stairs_0.png" id="1_7fut1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7fut1"]
+rough = true
+bounce = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_41vjt"]
 margin = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_wq5am"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_524ei"]
+albedo_texture = ExtResource("1_7fut1")
+metallic = 1.0
+metallic_specular = 0.59
+metallic_texture = ExtResource("1_7fut1")
 
-[node name="StaticBody3D" type="RigidBody3D"]
+[sub_resource type="BoxMesh" id="BoxMesh_wq5am"]
+material = SubResource("StandardMaterial3D_524ei")
+
+[node name="RigidBody3D" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_7fut1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
