@@ -29,8 +29,8 @@ func _ready():
 
 # Find which preload it matches
 		var index = -1
-		for i in range(GameState.block_scenes.size()):
-			if GameState.block_scenes[i].resource_path == instance_scene_path:
+		for i in range(GameData.block_scenes.size()):
+			if GameData.block_scenes[i].resource_path == instance_scene_path:
 				index = i
 				break
 		block_list.append([index, block.global_transform])
@@ -44,7 +44,22 @@ func _unhandled_input(event):
 		# Pitch (rotate camera up/down)
 		pitch = clamp(pitch - event.relative.y * MOUSE_SENSITIVITY, deg_to_rad(-89), deg_to_rad(89))
 		camera.rotation.x = pitch
-
+	if event is InputEventKey and event.pressed:
+		var new_index = -1
+		if event.keycode == KEY_1: new_index = 0
+		elif event.keycode == KEY_2: new_index = 1
+		elif event.keycode == KEY_3: new_index = 2
+		elif event.keycode == KEY_4: new_index = 3
+		elif event.keycode == KEY_5: new_index = 4
+		elif event.keycode == KEY_6: new_index = 5
+		elif event.keycode == KEY_7: new_index = 6
+		elif event.keycode == KEY_8: new_index = 7
+		elif event.keycode == KEY_9: new_index = 8
+		elif event.keycode == KEY_0: new_index = 9
+		# Assuming you only have 6 unique block scenes
+		
+		if new_index != -1 and new_index < GameData.block_scenes.size():
+			_set_current_block(new_index)
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
@@ -60,6 +75,14 @@ func _unhandled_input(event):
 
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		
+func _set_current_block(index: int):
+	# Ensure index wraps around (0, 1, 2, 3, 4, 5, 0, ...)
+	var new_index = (index % GameData.block_scenes.size() + GameData.block_scenes.size()) % GameData.block_scenes.size()
+	if new_index != current_block_index:
+		current_block_index = new_index
+		_create_preview_block()
+		GameData.block_selected.emit(current_block_index)
 
 func _physics_process(delta):
 	handle_movement(delta)
@@ -91,22 +114,21 @@ func handle_movement(_delta: float) -> void:
 func handle_block_input():
 	# Scroll through blocks
 	if Input.is_action_just_pressed("ui_right"):
-		current_block_index = (current_block_index + 1) % GameState.block_scenes.size()
-		_create_preview_block()
+		_set_current_block(current_block_index + 1)
 	elif Input.is_action_just_pressed("ui_left"):
-		current_block_index = (current_block_index - 1 + GameState.block_scenes.size()) % GameState.block_scenes.size()
-		_create_preview_block()
+		_set_current_block(current_block_index - 1)
 
 	# Right-click to place block
 	if Input.is_action_just_pressed("place"):
 		if raycast.is_colliding():
 			if GameData.place_block(current_block_index): # GameData.place_block() spends the money and returns true if successful
-				var pos = raycast.get_collision_point()
-				var block_scene = GameState.block_scenes[current_block_index]
+				var block_scene = GameData.block_scenes[current_block_index]
 				var block_instance = block_scene.instantiate()
 				get_tree().current_scene.add_child(block_instance)
-				block_instance.global_transform.origin = pos
+				block_instance.global_transform = preview_block.global_transform
 				placed_blocks.append(block_instance)
+		GameData.block_selected.emit(current_block_index)
+			
 				
 	if Input.is_action_just_pressed("break"):
 		if raycast.is_colliding():
@@ -117,8 +139,8 @@ func handle_block_input():
 				if collider in placed_blocks:
 					var instance_scene_path = collider.scene_file_path
 					var index = -1
-					for i in range(GameState.block_scenes.size()):
-						if GameState.block_scenes[i].resource_path == instance_scene_path:
+					for i in range(GameData.block_scenes.size()):
+						if GameData.block_scenes[i].resource_path == instance_scene_path:
 							index = i
 							break
 					print("break3")
@@ -136,8 +158,13 @@ func update_preview_block():
 		var pos = raycast.get_collision_point()
 		preview_block.global_transform.origin = pos
 		preview_block.visible = true
-
-		# Get the shape to test collisions
+		var current_cost: int = GameData.costs[current_block_index] 
+		var can_afford: bool = GameData.money >= current_cost
+		var has_stock: bool = GameData.inventory.get(current_block_index, 0) > 0
+		if not can_afford or not has_stock:
+			_set_preview_color(preview_block, Color(1, 0, 0, 0.5)) # Red
+		else:
+			_set_preview_color(preview_block, Color(0, 1, 0, 0.3)) # Green
 	else:
 		preview_block.visible = false
 
@@ -158,7 +185,7 @@ func _create_preview_block():
 		preview_block.queue_free()
 
 	# Instantiate the original block scene
-	var original_block = GameState.block_scenes[current_block_index].instantiate()
+	var original_block = GameData.block_scenes[current_block_index].instantiate()
 
 	# Create a new StaticBody3D as root for the preview
 	preview_block = StaticBody3D.new()

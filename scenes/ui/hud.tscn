@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2dagk0c6be27"]
+[gd_scene load_steps=7 format=3 uid="uid://d2dagk0c6be27"]
 
-[ext_resource type="Script" uid="uid://dwpqk5vtl47sb" path="res://scripts/hud.gd" id="1_bo48s"]
+[ext_resource type="Script" uid="uid://ckytby0i0bkpa" path="res://scripts/hud.gd" id="1_bo48s"]
 [ext_resource type="Texture2D" uid="uid://bgoqs57krqwls" path="res://scenes/ui/imgbin_7719aed94ff64fb00ba2ccd0fbfbca6f (1).png" id="1_hqnrr"]
 [ext_resource type="FontFile" uid="uid://dxufi63awhpuu" path="res://scenes/ui/BurntCorn-vmEdM.otf" id="2_bo48s"]
-[ext_resource type="FontFile" uid="uid://t7rsq55ppnso" path="res://scenes/ui/diego.ttf" id="4_8qguk"]
+[ext_resource type="FontFile" uid="uid://ddvhwf62blmvs" path="res://scenes/ui/diegos.ttf" id="4_8qguk"]
+[ext_resource type="FontFile" uid="uid://dfk6nj0d854bf" path="res://scenes/ui/RebellionSquad-ZpprZ.ttf" id="5_136eg"]
 
 [sub_resource type="FontVariation" id="FontVariation_8qguk"]
 base_font = ExtResource("2_bo48s")
@@ -15,10 +16,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_bo48s")
 metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+offset = Vector2(-10, 10)
+transform = Transform2D(1, 0, 0, 1, -10, 10)
 
 [node name="Margin" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -27,7 +32,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
+theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
@@ -49,23 +54,41 @@ size_flags_vertical = 0
 theme_override_colors/font_color = Color(1, 0.83137256, 0.28235295, 1)
 theme_override_fonts/font = SubResource("FontVariation_8qguk")
 theme_override_font_sizes/font_size = 60
-text = "1234"
 
 [node name="MessageLabel" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
-visible = false
-anchors_preset = -1
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -74.0
-offset_top = -120.0
-offset_right = 77.0
-offset_bottom = -85.0
+offset_left = -267.0
+offset_top = -255.0
+offset_right = 279.0
+offset_bottom = -155.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.99999994, 0.1943762, 0.14415294, 1)
+theme_override_colors/font_color = Color(0.9810714, 0.0010718718, 0.092622496, 1)
+theme_override_colors/font_shadow_color = Color(0.36548764, 0.4996928, 0.30358315, 0)
+theme_override_colors/font_outline_color = Color(0.6618155, 0.4338224, 0.33783495, 1)
 theme_override_fonts/font = ExtResource("4_8qguk")
 theme_override_font_sizes/font_size = 40
-text = "ikkjh"
+horizontal_alignment = 1
+
+[node name="SettingsIcon" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -121.0
+offset_top = 9.0
+offset_right = -3.0
+offset_bottom = 81.0
+grow_horizontal = 0
+pivot_offset = Vector2(-20, 20)
+theme_override_colors/font_color = Color(1, 0.8352941, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("5_136eg")
+theme_override_font_sizes/font_size = 30
+text = "
+"
+horizontal_alignment = 1

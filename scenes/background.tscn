@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://f4nlykoxsvd6"]
+[gd_scene load_steps=14 format=3 uid="uid://f4nlykoxsvd6"]
 
 [ext_resource type="PackedScene" uid="uid://d2dagk0c6be27" path="res://scenes/ui/hud.tscn" id="1_jougr"]
-[ext_resource type="PackedScene" path="res://scenes/ui/crosshair.tscn" id="3_cbsqf"]
+[ext_resource type="PackedScene" uid="uid://bwfy0mvsmoyb2" path="res://scenes/ui/crosshair.tscn" id="3_cbsqf"]
 [ext_resource type="PackedScene" uid="uid://siejaqxwr350" path="res://scenes/blocks/block.tscn" id="3_wisxt"]
+[ext_resource type="PackedScene" uid="uid://bb4mrt0cnefg3" path="res://scenes/ui/InventoryBar.tscn" id="4_wisxt"]
+[ext_resource type="PackedScene" uid="uid://ddhatrip4jdhy" path="res://scenes/ui/ControlsDisplay.tscn" id="5_wax1t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0wfyh"]
 size = Vector3(100, 2, 100)
@@ -17,6 +19,19 @@ size = Vector3(100, 2, 100)
 [sub_resource type="BoxShape3D" id="BoxShape3D_sugp2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jyhfs"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wisxt"]
+sky_top_color = Color(0.13862324, 0.62374175, 0.7855938, 1)
+sky_horizon_color = Color(0.53255534, 0.76992977, 0.99587613, 1)
+
+[sub_resource type="Sky" id="Sky_wisxt"]
+sky_material = SubResource("ProceduralSkyMaterial_wisxt")
+
+[sub_resource type="Environment" id="Environment_wax1t"]
+background_mode = 2
+background_energy_multiplier = 0.52
+sky = SubResource("Sky_wisxt")
+glow_enabled = true
 
 [node name="bg" type="Node3D"]
 
@@ -47,3 +62,13 @@ shape = SubResource("BoxShape3D_sugp2")
 mesh = SubResource("BoxMesh_jyhfs")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("3_cbsqf")]
+
+[node name="InventoryBar" parent="." instance=ExtResource("4_wisxt")]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="ControlsDisplay" parent="CanvasLayer2" instance=ExtResource("5_wax1t")]
+unique_name_in_owner = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wax1t")
