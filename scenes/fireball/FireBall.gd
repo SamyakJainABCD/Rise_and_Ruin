@@ -3,7 +3,7 @@ extends RigidBody3D
 @export var lifetime: float = 5.0
 @export var gravity: float = 0
 @export var explosion_radius: float = 10.0
-@export var explosion_force: float = 3.0
+@export var explosion_force: float = 10
 @export var impact_force_scale: float = 0.6
 @export var explosion_power_multiplier: float = 1.0
 

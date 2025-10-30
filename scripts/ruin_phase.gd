@@ -25,12 +25,12 @@ func place_opponent_blocks():
 		var index = entry[0]
 		var transform_of_entry = entry[1]
 		# Validate index
-		if index < 0 or index >= GameState.block_scenes.size():
+		if index < 0 or index >= GameData.block_scenes.size():
 			push_error("Invalid block index: %s" % index)
 			continue
 
 		# Instantiate and place
-		var block_scene = GameState.block_scenes[index]
+		var block_scene = GameData.block_scenes[index]
 		var instance = block_scene.instantiate()
 		instance.global_transform = Transform3D(transform_of_entry.basis, transform_of_entry.origin)
 

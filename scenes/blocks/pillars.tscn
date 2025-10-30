@@ -16,7 +16,7 @@ material = SubResource("StandardMaterial3D_m23gp")
 height = 4.0
 
 [node name="RigidBody3D" type="RigidBody3D"]
-mass = 10.0
+mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_0447h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

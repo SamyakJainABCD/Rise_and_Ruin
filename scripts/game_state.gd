@@ -9,8 +9,8 @@ var job : String = ""
 var finding_match: bool = false
 var opponent_block_list = []
 var highest_point_of_opponent_tower: float = 0
-#var server_link = "https://rise-and-ruin-server.onrender.com/"
-var server_link = "http://127.0.0.1:8000/"
+var server_link = "https://rise-and-ruin-server.onrender.com/"
+#var server_link = "http://127.0.0.1:8000/"
 
 var block_scenes := [
 	preload("res://scenes/blocks/block.tscn"),

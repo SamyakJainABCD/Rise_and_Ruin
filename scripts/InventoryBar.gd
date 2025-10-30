@@ -16,7 +16,6 @@ func _ready():
 	
 	# Initial setup
 	_setup_initial_slots()
-	update_display()
 	highlight_slot(0) # Highlight the first slot on game start
 
 func _setup_initial_slots():
@@ -56,16 +55,7 @@ func _setup_initial_slots():
 		slots_container.add_child(slot)
 
 
-func update_display():
-	# Update the count label for each slot based on the GameData dictionary
-	for block_index in range(slots.size()):
-		var slot = slots[block_index]
-		var count = GameData.inventory.get(block_index, 0)
-		
-		# Get the CountLabel node (adjust path based on your slot structure)
-		# Assumes CountLabel is a child of the VBoxContainer, which is inside MarginContainer, etc.
-		var count_label = slot.get_node("PanelContainer/MarginContainer/VBoxContainer/Label")
-		count_label.text = str(count)
+
 
 
 # File: InventoryBar.gd
