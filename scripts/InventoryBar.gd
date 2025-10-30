@@ -12,7 +12,6 @@ const ICON_PATH = "PanelContainer/MarginContainer/VBoxContainer/Icon"
 
 func _ready():
 	# Connect to the global signals
-	GameData.inventory_updated.connect(update_display)
 	GameData.block_selected.connect(highlight_slot)
 	
 	# Initial setup
@@ -25,9 +24,12 @@ func _setup_initial_slots():
 	for child in slots_container.get_children():
 		child.queue_free()
 	slots.clear() 
+	if GameData.costs == GameData.costs_for_ruin:
+		return
 
 	# We need 6 slots (matching the 6 blocks in GameData)
-	
+	while not GameData.costs:
+		await get_tree().process_frame
 	for block_index in range(GameData.costs.size()):
 		var price: int = GameData.costs[block_index]
 		var slot = SLOT_SCENE.instantiate()

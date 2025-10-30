@@ -1,9 +1,9 @@
 extends RigidBody3D
 
 @export var lifetime: float = 5.0
-@export var gravity: float = -9.8
+@export var gravity: float = 0
 @export var explosion_radius: float = 10.0
-@export var explosion_force: float = 30.0
+@export var explosion_force: float = 3.0
 @export var impact_force_scale: float = 0.6
 @export var explosion_power_multiplier: float = 1.0
 
@@ -22,7 +22,6 @@ func _ready():
 	# Connect the signal to the handler function
 	body_entered.connect(_on_body_entered) 
 	
-	launch(Vector3(15, 5, -1))
 	
 	# Keep the lifetime timer
 	await get_tree().create_timer(lifetime).timeout

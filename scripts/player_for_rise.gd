@@ -18,6 +18,7 @@ var pitch := 0.0  # Vertical angle
 var preview_block: Node3D = null  # Semi-transparent preview block
 
 func _ready():
+	GameData.costs = GameData.costs_for_rise
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 	# Create and show the initial preview block
@@ -158,13 +159,6 @@ func update_preview_block():
 		var pos = raycast.get_collision_point()
 		preview_block.global_transform.origin = pos
 		preview_block.visible = true
-		var current_cost: int = GameData.costs[current_block_index] 
-		var can_afford: bool = GameData.money >= current_cost
-		var has_stock: bool = GameData.inventory.get(current_block_index, 0) > 0
-		if not can_afford or not has_stock:
-			_set_preview_color(preview_block, Color(1, 0, 0, 0.5)) # Red
-		else:
-			_set_preview_color(preview_block, Color(0, 1, 0, 0.3)) # Green
 	else:
 		preview_block.visible = false
 
@@ -205,9 +199,9 @@ func _create_preview_block():
 
 
 func _set_preview_material(node: Node):
-	if node is MeshInstance3D:
-		node.material_override = preview_material
 	if node is CollisionShape3D:
 		node.disabled = true
+	if node is RigidBody3D:
+		node.gravity_scale = 0.0
 	for child in node.get_children():
 		_set_preview_material(child)

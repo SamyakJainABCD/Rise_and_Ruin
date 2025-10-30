@@ -4,9 +4,10 @@ var opponent_block_list: Array = []  # This is filled from server
 func _ready():
 	opponent_block_list = GameState.opponent_block_list
 	place_opponent_blocks()
-	
-	await get_tree().create_timer(5).timeout
-	var highest: float = 0
+	GameData.costs = GameData.costs_for_ruin
+	get_node("bg/InventoryBar")._setup_initial_slots()
+	await get_tree().create_timer(10).timeout
+	var highest: float = -1
 	for block in get_children():
 		if block is RigidBody3D:
 			if block.position.y > highest:

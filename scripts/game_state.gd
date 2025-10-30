@@ -9,6 +9,8 @@ var job : String = ""
 var finding_match: bool = false
 var opponent_block_list = []
 var highest_point_of_opponent_tower: float = 0
+#var server_link = "https://rise-and-ruin-server.onrender.com/"
+var server_link = "http://127.0.0.1:8000/"
 
 var block_scenes := [
 	preload("res://scenes/blocks/block.tscn"),
@@ -36,7 +38,7 @@ func find_match() -> void:
 	current_request = RequestType.FIND_MATCH
 	var body = {"player_id": player_id}
 	var json_body = JSON.stringify(body)
-	http_request.request("http://127.0.0.1:8000/find_match/", [], HTTPClient.METHOD_POST, json_body)
+	http_request.request(server_link + "find_match/", [], HTTPClient.METHOD_POST, json_body)
 
 
 # --- SEND MATCH DATA ---
@@ -53,7 +55,7 @@ func send_match_data(payload) -> void:
 		"payload": payload,
 	}
 	var json_body = JSON.stringify(body)
-	http_request.request("http://127.0.0.1:8000/send_match_data/", [], HTTPClient.METHOD_POST, json_body)
+	http_request.request(server_link + "send_match_data/", [], HTTPClient.METHOD_POST, json_body)
 	print("sent data")
 
 
@@ -68,13 +70,14 @@ func fetch_opponent_data() -> void:
 		"match_id": match_id
 	}
 	var json_body = JSON.stringify(body)
-	http_request.request("http://127.0.0.1:8000/fetch_opponent_data/", [], HTTPClient.METHOD_POST, json_body)
+	http_request.request(server_link + "fetch_opponent_data/", [], HTTPClient.METHOD_POST, json_body)
 	print("fetched from fetch_opponent_data()")
 
 
 # --- GENERAL HTTP RESPONSE HANDLER ---
 func _on_request_completed(_result, _response_code, _headers, body):
 	var json = JSON.new()
+	print(json)
 	var err = json.parse(body.get_string_from_utf8())
 	if err != OK:
 		print("Failed to parse response")

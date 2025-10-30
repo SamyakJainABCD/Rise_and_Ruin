@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://ory0dt3uaqey"]
+
+[ext_resource type="PackedScene" path="res://scenes/blocks/pillars.tscn" id="1_asy85"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="RigidBody3D" parent="." instance=ExtResource("1_asy85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="RigidBody3D2" parent="." instance=ExtResource("1_asy85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="RigidBody3D3" parent="." instance=ExtResource("1_asy85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="RigidBody3D4" parent="." instance=ExtResource("1_asy85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)

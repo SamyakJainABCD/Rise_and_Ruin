@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://f4nlykoxsvd6" path="res://scenes/background.tscn" id="1_bi5df"]
 [ext_resource type="PackedScene" uid="uid://dq1kp4xie48x3" path="res://scenes/player_for_rise.tscn" id="1_h75rx"]
-[ext_resource type="PackedScene" path="res://scenes/ui/crosshair.tscn" id="1_ub2h2"]
+[ext_resource type="PackedScene" uid="uid://bwfy0mvsmoyb2" path="res://scenes/ui/crosshair.tscn" id="1_ub2h2"]
 
 [node name="main" type="Node3D"]
 

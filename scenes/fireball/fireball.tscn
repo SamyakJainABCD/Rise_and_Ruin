@@ -23,6 +23,7 @@ shader_parameter/ball_color = Color(0.8756056, 0.30153242, 0, 1)
 radius = 0.36637327
 
 [node name="Fireball" type="RigidBody3D"]
+gravity_scale = 0.0
 script = ExtResource("1_uqrdk")
 
 [node name="FireballMesh" type="MeshInstance3D" parent="."]

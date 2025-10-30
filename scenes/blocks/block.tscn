@@ -19,6 +19,7 @@ metallic_texture = ExtResource("1_7fut1")
 material = SubResource("StandardMaterial3D_524ei")
 
 [node name="RigidBody3D" type="RigidBody3D"]
+mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_7fut1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

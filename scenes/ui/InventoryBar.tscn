@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bb4mrt0cnefg3"]
 
-[ext_resource type="Script" uid="uid://752qp2k4tpgd" path="res://scripts/InventoryBar.gd" id="1_tpxa5"]
+[ext_resource type="Script" uid="uid://2tltcawjwh8b" path="res://scripts/InventoryBar.gd" id="1_tpxa5"]
 
 [node name="InventoryBar" type="Control"]
 layout_mode = 3
@@ -19,9 +19,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = -98.0
-offset_right = 40.0
-offset_bottom = -58.0
+offset_left = -3.0
+offset_top = -140.0
+offset_right = 37.0
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4

@@ -48,8 +48,24 @@ mesh = SubResource("BoxMesh_sugp2")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.86524767, 0.5013447, 0, -0.5013447, 0.86524767, 0, 1.5036756, 1.8170669)
 
-[node name="StaticBody3D" parent="." instance=ExtResource("3_wisxt")]
+[node name="block" parent="." instance=ExtResource("3_wisxt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -4)
+physics_material_override = null
+
+[node name="block2" parent="." instance=ExtResource("3_wisxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -4)
+physics_material_override = null
+
+[node name="block3" parent="." instance=ExtResource("3_wisxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, -4)
+physics_material_override = null
+
+[node name="block4" parent="." instance=ExtResource("3_wisxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, -4)
+physics_material_override = null
+
+[node name="block5" parent="." instance=ExtResource("3_wisxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, -4)
 physics_material_override = null
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]

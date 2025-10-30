@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://v1jbis5seu5i"]
+[gd_scene load_steps=3 format=3 uid="uid://v1jbis5seu5i"]
 
+[ext_resource type="Script" uid="uid://c7jgkm7qu0ewf" path="res://scripts/launcher.gd" id="1_m736f"]
 [ext_resource type="PackedScene" uid="uid://bgeo1bkind83w" path="res://assets/ghpc_9k111_fagot.glb" id="1_ut831"]
 
 [node name="launcher" type="Node3D"]
+script = ExtResource("1_m736f")
 
-[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_ut831")]
-transform = Transform3D(-8.742278e-06, 0, 200, 0, 200, 0, -200, 0, -8.742278e-06, 0, 0, 0)
+[node name="launcher_asset" parent="." instance=ExtResource("1_ut831")]
+transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="launcher_asset"]
+transform = Transform3D(-2.9140923e-10, 0, -0.0066666664, 0, 0.0066666664, 0, 0.0066666664, 0, -2.9140923e-10, -0.010918863, 0.007828142, 0)
+current = true
+
+[node name="position_for_missile_spawning" type="Node3D" parent="launcher_asset"]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0.0047633895, 0.005346963, 0)
