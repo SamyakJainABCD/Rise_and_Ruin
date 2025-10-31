@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ory0dt3uaqey"]
 
-[ext_resource type="PackedScene" path="res://scenes/blocks/pillars.tscn" id="1_asy85"]
+[ext_resource type="PackedScene" uid="uid://c8btyt4fi4lo8" path="res://scenes/blocks/pillars.tscn" id="1_asy85"]
 
 [node name="Node3D" type="Node3D"]
 

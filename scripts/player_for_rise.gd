@@ -16,6 +16,7 @@ var placed_blocks = []
 
 var pitch := 0.0  # Vertical angle
 var preview_block: Node3D = null  # Semi-transparent preview block
+var TOTAL_TIME = 60
 
 func _ready():
 	GameData.costs = GameData.costs_for_rise
@@ -23,7 +24,8 @@ func _ready():
 
 	# Create and show the initial preview block
 	_create_preview_block()
-	await get_tree().create_timer(10).timeout
+	GameData.start_timer(TOTAL_TIME)
+	await get_tree().create_timer(60).timeout
 	var block_list = []
 	for block in placed_blocks:
 		var instance_scene_path = block.scene_file_path
@@ -127,16 +129,14 @@ func handle_block_input():
 				var block_instance = block_scene.instantiate()
 				get_tree().current_scene.add_child(block_instance)
 				block_instance.global_transform = preview_block.global_transform
-				placed_blocks.append(block_instance)
+				add_to_placed_blocks_list(block_instance)
 		GameData.block_selected.emit(current_block_index)
 			
 				
 	if Input.is_action_just_pressed("break"):
 		if raycast.is_colliding():
-			print("break1")
 			var collider = raycast.get_collider()
 			if collider and collider != preview_block:
-				print("break2")
 				if collider in placed_blocks:
 					var instance_scene_path = collider.scene_file_path
 					var index = -1
@@ -144,7 +144,6 @@ func handle_block_input():
 						if GameData.block_scenes[i].resource_path == instance_scene_path:
 							index = i
 							break
-					print("break3")
 					GameData.break_block(index)
 					placed_blocks.erase(collider)
 					collider.queue_free()
@@ -205,3 +204,10 @@ func _set_preview_material(node: Node):
 		node.gravity_scale = 0.0
 	for child in node.get_children():
 		_set_preview_material(child)
+
+func add_to_placed_blocks_list(block_instance):
+	if block_instance is RigidBody3D:
+		placed_blocks.append(block_instance)
+	else:
+		for child in block_instance.get_children():
+			add_to_placed_blocks_list(child)

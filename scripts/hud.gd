@@ -8,6 +8,7 @@ extends Control
 @onready var settings_panel = $"%SettingsPanel"
 @onready var settings_icon = $"CanvasLayer/SettingsIcon"
 @onready var controls_display = $"%ControlsDisplay"
+@onready var timer = $"%Timer"
 const CONTROLS_TEXT = """
 [b]CONTROLS:[/b]
 -------------------
@@ -22,6 +23,7 @@ func _ready():
 	_on_money_changed(GameData.money)
 	if is_instance_valid(settings_icon):
 		print("Settings Icon Global Position: ", settings_icon.global_position)
+	GameData.hud = self
 	
 func _unhandled_input(event):
 	# 🚩 NEW FUNCTION: Check for the custom keyboard action
@@ -53,3 +55,10 @@ func show_message(text: String, duration: float = 2.0):
 	var timer = get_tree().create_timer(duration)
 	await timer.timeout
 	message_label.visible = false
+
+
+func start_timer(time):
+	timer.text=str(time)
+	if get_tree():
+		await get_tree().create_timer(1).timeout
+	start_timer(time-1)

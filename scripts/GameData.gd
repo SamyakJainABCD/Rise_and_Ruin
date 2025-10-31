@@ -30,6 +30,7 @@ const BLOCK_ICONS: Array[Texture2D] = [
 var costs_for_rise = [150, 300, 200, 150, 250, 150, 300, 200, 150, 250]
 var costs_for_ruin = [1000]
 var costs
+var hud
 const STARTING_MONEY: int = 5000
 # --- Money Variable with Setter ---
 # The setter ensures the 'money_changed' signal is emitted automatically 
@@ -58,3 +59,6 @@ func break_block(block_index: int):
 	var cost = costs[block_index]
 	money += cost
 	#return true;
+
+func start_timer(time):
+	hud.start_timer(time)

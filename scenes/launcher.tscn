@@ -7,10 +7,10 @@
 script = ExtResource("1_m736f")
 
 [node name="launcher_asset" parent="." instance=ExtResource("1_ut831")]
-transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, 0, 0, 0)
+transform = Transform3D(300, 0, 0, 0, 300, 0, 0, 0, 300, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="launcher_asset"]
-transform = Transform3D(-2.9140923e-10, 0, -0.0066666664, 0, 0.0066666664, 0, 0.0066666664, 0, -2.9140923e-10, -0.010918863, 0.007828142, 0)
+transform = Transform3D(-9.7136424e-11, 0, -0.0022222223, 0, 0.0022222223, 0, 0.0022222223, 0, -9.7136424e-11, -0.012488219, 0.007828142, 0)
 current = true
 
 [node name="position_for_missile_spawning" type="Node3D" parent="launcher_asset"]
