@@ -2,7 +2,7 @@ extends Node3D
 
 @export var speed: float = 5.0
 @export var mouse_sensitivity: float = 0.005
-@export var fireball_speed: float = 20.0
+@export var fireball_speed: float = 80.0
 
 @onready var cam: Camera3D = $launcher_asset/Camera3D
 @onready var spawn_point: Node3D = $launcher_asset/position_for_missile_spawning

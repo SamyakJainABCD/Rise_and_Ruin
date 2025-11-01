@@ -1,10 +1,7 @@
-# File: InventoryBar.gd
-
 extends Control
 
 # Must preload the slot template scene
 const SLOT_SCENE = preload("res://scenes/ui/InventorySlot.tscn")
-#var icon_rect = slot.get_node("	PanelContainer/MarginContainer/VBoxContainer/Icon")
 @onready var slots_container = $CanvasLayer/SlotsContainer
 var slots: Array = [] # To store references to all instantiated slot nodes
 var current_highlighted_slot: Control = null
@@ -23,7 +20,7 @@ func _setup_initial_slots():
 	for child in slots_container.get_children():
 		child.queue_free()
 	slots.clear() 
-	if GameData.costs == GameData.costs_for_ruin:
+	if GameData.costs == GameData.costs_for_ruin or not GameData.costs:
 		return
 
 	# We need 6 slots (matching the 6 blocks in GameData)
@@ -40,7 +37,6 @@ func _setup_initial_slots():
 		if is_instance_valid(price_label):
 			price_label.text += "%d" % price
 		var index_label = Label.new()
-		#index_label.text = str(block_index + 1)
 		
 		index_label.set_anchors_preset(Control.PRESET_TOP_LEFT)
 		index_label.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
@@ -49,7 +45,6 @@ func _setup_initial_slots():
 		
 		index_label.add_theme_font_size_override("font_size", 16)
 		slot.add_child(index_label) # Add directly to the root Slot control
-		#index_label.set_position(Vector2(5, 5)) # Position in the corner
 		
 		slots.append(slot)
 		slots_container.add_child(slot)
@@ -76,17 +71,6 @@ func highlight_slot(index: int):
 					   
 	# Reset the tracker (optional, but clean)
 	current_highlighted_slot = null
-	## 1. Clear highlight/scale from the PREVIOUSLY selected slot
-	#if current_highlighted_slot:
-		#var previous_highlight_rect = current_highlighted_slot.get_node("HighlightRect") 
-		#var previous_icon_rect = current_highlighted_slot.get_node(ICON_PATH) 
-		#if is_instance_valid(previous_icon_rect):
-			##Reset scale and kill tween
-			#previous_icon_rect.create_tween().kill() # Kills any existing tween created on this node
-			#previous_icon_rect.scale = Vector2(1.0, 1.0)
-				##Reset background highlight
-		#if is_instance_valid(previous_highlight_rect):
-			#previous_highlight_rect.visible = false
 
 	# 2. Get the NEWLY selected slot
 	if index >= 0 and index < slots.size():

@@ -5,19 +5,19 @@
 [ext_resource type="ArrayMesh" uid="uid://bfotg8krkjlot" path="res://scenes/fireball/fireball_mesh.obj" id="3_qcqpa"]
 [ext_resource type="Shader" uid="uid://dww4aoopx6wvo" path="res://scenes/fireball/fireheader_shader.tres" id="4_q6txl"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0i8a6"]
-render_priority = 0
-shader = ExtResource("2_fdd6e")
-shader_parameter/fire_color = Color(0.9411765, 0.2627451, 0.26666668, 1)
-shader_parameter/ColorParameter = Color(0.9960334, 0.35584977, 0.1931151, 1)
-shader_parameter/speed = Vector2(0.2, 2.25)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3sitw"]
 render_priority = 0
 shader = ExtResource("4_q6txl")
 shader_parameter/ball_color = Color(0.8756056, 0.30153242, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_y1x3a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0i8a6"]
+render_priority = 0
+shader = ExtResource("2_fdd6e")
+shader_parameter/fire_color = Color(0.9411765, 0.2627451, 0.26666668, 1)
+shader_parameter/ColorParameter = Color(0.9960334, 0.35584977, 0.1931151, 1)
+shader_parameter/speed = Vector2(0.2, 2.25)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cc4ml"]
 radius = 0.36637327
@@ -26,16 +26,17 @@ radius = 0.36637327
 gravity_scale = 0.0
 script = ExtResource("1_uqrdk")
 
-[node name="FireballMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0.20423853, -0.122532606, -0.118760586)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.77308786, -0.6342989, 0, 0.6342989, 0.77308786, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_3sitw")
+mesh = SubResource("SphereMesh_y1x3a")
+
+[node name="FireballMesh" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(0.74626863, 0, 0, 0, 0.5769313, 0.47335738, 0, -0.47335738, 0.5769313, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_0i8a6")
 cast_shadow = 0
 mesh = ExtResource("3_qcqpa")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.67, 0, 0, 0, 0.5179689, -0.42498025, 0, 0.42498025, 0.5179689, 0.29159653, -0.07546097, 0.045293927)
-material_override = SubResource("ShaderMaterial_3sitw")
-mesh = SubResource("SphereMesh_y1x3a")
+skeleton = NodePath("../..")
 
 [node name="fireballcollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26839012, -0.061087027, 0.003205061)

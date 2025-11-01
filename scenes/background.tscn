@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://f4nlykoxsvd6"]
+[gd_scene load_steps=17 format=3 uid="uid://f4nlykoxsvd6"]
 
 [ext_resource type="PackedScene" uid="uid://d2dagk0c6be27" path="res://scenes/ui/hud.tscn" id="1_jougr"]
 [ext_resource type="Texture2D" uid="uid://bg0jwaex83tf7" path="res://assets/ground.jpg" id="2_1tmhi"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bb4mrt0cnefg3" path="res://scenes/ui/InventoryBar.tscn" id="4_wisxt"]
 [ext_resource type="PackedScene" uid="uid://ddhatrip4jdhy" path="res://scenes/ui/ControlsDisplay.tscn" id="5_wax1t"]
 [ext_resource type="PackedScene" uid="uid://b3p6l3fp4vs0f" path="res://assets/linden_tree.glb" id="7_1tmhi"]
+[ext_resource type="PackedScene" uid="uid://byuk85isaxeo2" path="res://scenes/blocks/floor.tscn" id="8_l5f8m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0wfyh"]
 size = Vector3(1000, 2, 1000)
@@ -217,3 +218,6 @@ transform = Transform3D(-3.059797e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.059797e-08
 
 [node name="tree42" parent="." instance=ExtResource("7_1tmhi")]
 transform = Transform3D(-3.059797e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.059797e-08, 99.33333, 1, 25.666664)
+
+[node name="RigidBody3D" parent="." instance=ExtResource("8_l5f8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 6, -4)

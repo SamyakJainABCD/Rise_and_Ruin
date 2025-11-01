@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://f4nlykoxsvd6" path="res://scenes/background.tscn" id="1_bi5df"]
 [ext_resource type="PackedScene" uid="uid://dq1kp4xie48x3" path="res://scenes/player_for_rise.tscn" id="1_h75rx"]
 [ext_resource type="PackedScene" uid="uid://bwfy0mvsmoyb2" path="res://scenes/ui/crosshair.tscn" id="1_ub2h2"]
-[ext_resource type="PackedScene" uid="uid://bgeo1bkind83w" path="res://assets/ghpc_9k111_fagot.glb" id="4_bi5df"]
+[ext_resource type="PackedScene" uid="uid://dcll55kv37p20" path="res://assets/simple_cannon.glb" id="4_bi5df"]
 
 [node name="main" type="Node3D"]
 
@@ -12,7 +12,7 @@
 [node name="bg" parent="." instance=ExtResource("1_bi5df")]
 
 [node name="player" parent="." instance=ExtResource("1_h75rx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1838756, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.734267, 3.3587508, 0)
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("4_bi5df")]
-transform = Transform3D(450, 0, 0, 0, 450, 0, 0, 0, 450, -13, 1, 0)
+transform = Transform3D(-2.1855694e-10, 0, 0.005, 0, 0.005, 0, -0.005, 0, -2.1855694e-10, -20, 2.646, 0)

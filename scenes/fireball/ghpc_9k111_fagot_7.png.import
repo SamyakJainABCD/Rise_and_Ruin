@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ceh6ysr5ip4uo"
-path="res://.godot/imported/ghpc_9k111_fagot_7.png-09cf9b36c5b6417060f92385c7dafef7.ctex"
+path.s3tc="res://.godot/imported/ghpc_9k111_fagot_7.png-09cf9b36c5b6417060f92385c7dafef7.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "c9f9f5eeb14d34d64bb1abd0a1ff7665"
@@ -14,11 +15,11 @@ generator_parameters={
 [deps]
 
 source_file="res://scenes/fireball/ghpc_9k111_fagot_7.png"
-dest_files=["res://.godot/imported/ghpc_9k111_fagot_7.png-09cf9b36c5b6417060f92385c7dafef7.ctex"]
+dest_files=["res://.godot/imported/ghpc_9k111_fagot_7.png-09cf9b36c5b6417060f92385c7dafef7.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -40,4 +41,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

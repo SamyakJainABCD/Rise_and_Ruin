@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cp0ft5ok15nxq"]
+[gd_scene load_steps=5 format=3 uid="uid://cp0ft5ok15nxq"]
 
 [ext_resource type="PackedScene" uid="uid://f4nlykoxsvd6" path="res://scenes/background.tscn" id="1_abg54"]
 [ext_resource type="Script" uid="uid://ds0tf2mohwoew" path="res://scripts/ruin_phase.gd" id="1_p25qm"]
 [ext_resource type="PackedScene" uid="uid://v1jbis5seu5i" path="res://scenes/launcher.tscn" id="4_abg54"]
+[ext_resource type="PackedScene" uid="uid://c8btyt4fi4lo8" path="res://scenes/blocks/pillars.tscn" id="5_f8gda"]
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_p25qm")
@@ -10,4 +11,10 @@ script = ExtResource("1_p25qm")
 [node name="bg" parent="." instance=ExtResource("1_abg54")]
 
 [node name="launcher" parent="." instance=ExtResource("4_abg54")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
+speed = 5.0
+mouse_sensitivity = 0.005
+fireball_speed = 80.0
+
+[node name="RigidBody3D3" parent="." instance=ExtResource("5_f8gda")]
+transform = Transform3D(1, 0, 0, 0, 0.86602545, 0.50000006, 0, -0.50000006, 0.86602545, -6, 1, 9)

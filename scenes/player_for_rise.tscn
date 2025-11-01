@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dq1kp4xie48x3"]
 
-[ext_resource type="Script" uid="uid://d1udqvcld7a0j" path="res://scripts/player_for_rise.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://j101ngk3tux8" path="res://scripts/player_for_rise.gd" id="1_3vyb7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 
@@ -13,7 +13,7 @@ script = ExtResource("1_3vyb7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50620496, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
-target_position = Vector3(0, 0, -10)
+target_position = Vector3(0, 0, -20)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_u8vuu")

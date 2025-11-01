@@ -124,7 +124,7 @@ func handle_block_input():
 	# Right-click to place block
 	if Input.is_action_just_pressed("place"):
 		if raycast.is_colliding():
-			if GameData.place_block(current_block_index): # GameData.place_block() spends the money and returns true if successful
+			if GameData.place_block(current_block_index, preview_block.global_transform.origin): # GameData.place_block() spends the money and returns true if successful
 				var block_scene = GameData.block_scenes[current_block_index]
 				var block_instance = block_scene.instantiate()
 				get_tree().current_scene.add_child(block_instance)

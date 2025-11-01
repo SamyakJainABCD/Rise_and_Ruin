@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://byuk85isaxeo2"]
+
+[ext_resource type="Texture2D" uid="uid://bw53srv5ffpjd" path="res://assets/stone_pillar___3daily_2017_0.png" id="1_0qtli"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_inyod"]
+height = 0.5
+radius = 4.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0cg8m"]
+top_radius = 4.0
+bottom_radius = 4.0
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jl154"]
+albedo_texture = ExtResource("1_0qtli")
+
+[node name="RigidBody3D" type="RigidBody3D"]
+mass = 8.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("CylinderShape3D_inyod")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("CylinderMesh_0cg8m")
+surface_material_override/0 = SubResource("StandardMaterial3D_jl154")
