@@ -1,8 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://psfya4y5empb"]
+[gd_scene load_steps=5 format=3 uid="uid://psfya4y5empb"]
 
 [ext_resource type="Script" uid="uid://b1v70varhsq2o" path="res://scripts/you_won_and_you_lost.gd" id="1_487lb"]
 [ext_resource type="Texture2D" uid="uid://bgyrsnk8luwce" path="res://assets/loose.jpg" id="2_i2uut"]
 [ext_resource type="FontFile" uid="uid://dxufi63awhpuu" path="res://scenes/ui/BurntCorn-vmEdM.otf" id="3_i2uut"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2uut"]
+bg_color = Color(1, 1, 0, 0.6666667)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_color = Color(1, 1, 0, 0.6666667)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="you_lost" type="Node2D"]
 script = ExtResource("1_487lb")
@@ -27,17 +38,17 @@ texture = ExtResource("2_i2uut")
 [node name="Button" type="Button" parent="CanvasLayer/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.781
-anchor_right = 0.5
-anchor_bottom = 0.781
-offset_left = -248.0
-offset_top = -44.48004
-offset_right = 247.0
-offset_bottom = 44.51996
+anchor_left = 0.499
+anchor_top = 0.90700006
+anchor_right = 0.499
+anchor_bottom = 0.90700006
+offset_left = -54.080017
+offset_top = -15.560059
+offset_right = 53.919983
+offset_bottom = 15.439941
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.7599265, 0.9494024, 0.5427361, 1)
+theme_override_colors/font_color = Color(0.66082007, 0.98697263, 0.2473611, 1)
 theme_override_colors/font_focus_color = Color(0.9352777, 1, 0.4629032, 1)
 theme_override_colors/font_pressed_color = Color(0.5646, 0.5890709, 0, 1)
 theme_override_colors/font_hover_color = Color(0.3619158, 0.5561118, 0.12156757, 1)
@@ -46,6 +57,7 @@ theme_override_colors/font_disabled_color = Color(0.45840454, 0.45840532, 0.4584
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_i2uut")
 theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_i2uut")
 text = "HOME SCREEN"
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/TextureRect/Button" to="." method="_on_home_screen_button_pressed"]

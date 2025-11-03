@@ -1,13 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://f4nlykoxsvd6"]
+[gd_scene load_steps=13 format=3 uid="uid://f4nlykoxsvd6"]
 
 [ext_resource type="PackedScene" uid="uid://d2dagk0c6be27" path="res://scenes/ui/hud.tscn" id="1_jougr"]
 [ext_resource type="Texture2D" uid="uid://bg0jwaex83tf7" path="res://assets/ground.jpg" id="2_1tmhi"]
 [ext_resource type="PackedScene" uid="uid://bwfy0mvsmoyb2" path="res://scenes/ui/crosshair.tscn" id="3_cbsqf"]
-[ext_resource type="PackedScene" uid="uid://siejaqxwr350" path="res://scenes/blocks/block.tscn" id="3_wisxt"]
 [ext_resource type="PackedScene" uid="uid://bb4mrt0cnefg3" path="res://scenes/ui/InventoryBar.tscn" id="4_wisxt"]
 [ext_resource type="PackedScene" uid="uid://ddhatrip4jdhy" path="res://scenes/ui/ControlsDisplay.tscn" id="5_wax1t"]
 [ext_resource type="PackedScene" uid="uid://b3p6l3fp4vs0f" path="res://assets/linden_tree.glb" id="7_1tmhi"]
-[ext_resource type="PackedScene" uid="uid://byuk85isaxeo2" path="res://scenes/blocks/floor.tscn" id="8_l5f8m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0wfyh"]
 size = Vector3(1000, 2, 1000)
@@ -19,10 +17,6 @@ uv1_scale = Vector3(1000, 1000, 1000)
 [sub_resource type="BoxMesh" id="BoxMesh_sugp2"]
 material = SubResource("StandardMaterial3D_1tmhi")
 size = Vector3(1000, 2, 1000)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_sugp2"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_jyhfs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wisxt"]
 sky_top_color = Color(0.13862324, 0.62374175, 0.7855938, 1)
@@ -51,35 +45,6 @@ mesh = SubResource("BoxMesh_sugp2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.86524767, 0.5013447, 0, -0.5013447, 0.86524767, 0, 1.5036756, 1.8170669)
-
-[node name="block" parent="." instance=ExtResource("3_wisxt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -4)
-physics_material_override = null
-
-[node name="block2" parent="." instance=ExtResource("3_wisxt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -4)
-physics_material_override = null
-
-[node name="block3" parent="." instance=ExtResource("3_wisxt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, -4)
-physics_material_override = null
-
-[node name="block4" parent="." instance=ExtResource("3_wisxt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, -4)
-physics_material_override = null
-
-[node name="block5" parent="." instance=ExtResource("3_wisxt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, -4)
-physics_material_override = null
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6122797, 1)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-shape = SubResource("BoxShape3D_sugp2")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
-mesh = SubResource("BoxMesh_jyhfs")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("3_cbsqf")]
 
@@ -218,6 +183,3 @@ transform = Transform3D(-3.059797e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.059797e-08
 
 [node name="tree42" parent="." instance=ExtResource("7_1tmhi")]
 transform = Transform3D(-3.059797e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.059797e-08, 99.33333, 1, 25.666664)
-
-[node name="RigidBody3D" parent="." instance=ExtResource("8_l5f8m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 6, -4)

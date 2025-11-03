@@ -20,6 +20,7 @@ var TOTAL_TIME = 60
 
 func _ready():
 	GameData.costs = GameData.costs_for_rise
+	GameData.BLOCK_ICONS = GameData.block_icons
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 	# Create and show the initial preview block

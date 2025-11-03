@@ -6,6 +6,7 @@ func _ready():
 	opponent_block_list = GameState.opponent_block_list
 	place_opponent_blocks()
 	GameData.costs = GameData.costs_for_ruin
+	GameData.BLOCK_ICONS = GameData.missile_icons
 	get_node("bg/InventoryBar")._setup_initial_slots()
 	GameData.start_timer(TOTAL_TIME)
 	await get_tree().create_timer(TOTAL_TIME).timeout

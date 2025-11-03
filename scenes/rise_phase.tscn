@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvry2v8ju4p7e"]
+[gd_scene load_steps=6 format=3 uid="uid://bvry2v8ju4p7e"]
 
 [ext_resource type="PackedScene" uid="uid://f4nlykoxsvd6" path="res://scenes/background.tscn" id="1_bi5df"]
 [ext_resource type="PackedScene" uid="uid://dxb42y85uwmkq" path="res://scenes/fence.tscn" id="1_dm4v1"]
 [ext_resource type="PackedScene" uid="uid://dq1kp4xie48x3" path="res://scenes/player_for_rise.tscn" id="1_h75rx"]
 [ext_resource type="PackedScene" uid="uid://bwfy0mvsmoyb2" path="res://scenes/ui/crosshair.tscn" id="1_ub2h2"]
 [ext_resource type="PackedScene" uid="uid://dcll55kv37p20" path="res://assets/simple_cannon.glb" id="4_bi5df"]
-[ext_resource type="PackedScene" uid="uid://dnpki43odve3j" path="res://scenes/fenc.tscn" id="6_dm4v1"]
 
 [node name="main" type="Node3D"]
 
@@ -20,5 +19,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.734267, 3.3587508, 0)
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("4_bi5df")]
 transform = Transform3D(-2.1855694e-10, 0, 0.005, 0, 0.005, 0, -0.005, 0, -2.1855694e-10, -20, 2.646, 0)
-
-[node name="fenc" parent="." instance=ExtResource("6_dm4v1")]

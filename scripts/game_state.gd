@@ -10,17 +10,8 @@ var finding_match: bool = false
 var opponent_block_list = []
 var highest_point_of_opponent_tower: float = 0
 var server_link = "https://rise-and-ruin-server.onrender.com/"
+var username: String = ""
 #var server_link = "http://127.0.0.1:8000/"
-
-var block_scenes := [
-	preload("res://scenes/blocks/block.tscn"),
-	preload("res://scenes/blocks/sphere.tscn"),
-	#preload("res://scenes/blocks/stairs.tscn"),
-	preload("res://scenes/blocks/pillars.tscn"),
-	preload("res://scenes/blocks/pyramid.tscn"),
-	preload("res://scenes/blocks/plank.tscn"),
-]
-
 func new_match():
 	player_id = str(randi())
 	match_id = ""

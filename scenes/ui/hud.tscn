@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bgoqs57krqwls" path="res://scenes/ui/imgbin_7719aed94ff64fb00ba2ccd0fbfbca6f (1).png" id="1_hqnrr"]
 [ext_resource type="FontFile" uid="uid://dxufi63awhpuu" path="res://scenes/ui/BurntCorn-vmEdM.otf" id="2_bo48s"]
 [ext_resource type="FontFile" uid="uid://ddvhwf62blmvs" path="res://scenes/ui/diegos.ttf" id="4_8qguk"]
-[ext_resource type="FontFile" uid="uid://dfk6nj0d854bf" path="res://scenes/ui/RebellionSquad-ZpprZ.ttf" id="5_136eg"]
+[ext_resource type="FontFile" uid="uid://co22wt0ynnfpd" path="res://assets/fonts/Tektur-VariableFont_wdth,wght.ttf" id="5_136eg"]
 
 [sub_resource type="FontVariation" id="FontVariation_8qguk"]
 base_font = ExtResource("2_bo48s")
@@ -60,6 +60,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.78431374, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "time"
 
@@ -100,3 +101,20 @@ theme_override_font_sizes/font_size = 30
 text = "
 "
 horizontal_alignment = 1
+
+[node name="username" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -42.0
+offset_right = -6.0
+offset_bottom = -19.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.82606, 0.82606006, 0.82606, 1)
+theme_override_fonts/font = ExtResource("5_136eg")
+theme_override_font_sizes/font_size = 40
+text = "Opponent:"

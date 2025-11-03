@@ -1,9 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2afpfg14m62d"]
+[gd_scene load_steps=6 format=3 uid="uid://b2afpfg14m62d"]
 
 [ext_resource type="Script" uid="uid://busjnbli4finq" path="res://scripts/home_screen.gd" id="1_lapbl"]
 [ext_resource type="Texture2D" uid="uid://7isc4p3r45qe" path="res://assets/homescreen.jpg" id="2_bie51"]
 [ext_resource type="FontFile" uid="uid://b3aej707x0c4n" path="res://scenes/ui/SamuraiBlast-8MnyD.otf" id="3_tjifo"]
 [ext_resource type="Texture2D" uid="uid://dfql0wy82myt3" path="res://assets/start.jpg" id="4_ih2x6"]
+
+[sub_resource type="FontFile" id="FontFile_bie51"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
 
 [node name="HomeScreen" type="Control"]
 layout_mode = 3
@@ -56,7 +68,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -68,6 +80,14 @@ offset_top = -61.0
 offset_right = 158.5
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="LineEdit" type="LineEdit" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontFile_bie51")
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Enter usename"
+alignment = 1
+max_length = 10
 
 [node name="MakeMatch" type="Button" parent="TextureRect/VBoxContainer"]
 layout_mode = 2

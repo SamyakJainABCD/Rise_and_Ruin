@@ -8,19 +8,19 @@ signal block_selected(new_index: int)
 const block_scenes := [
 	preload("res://scenes/blocks/block.tscn"),
 	preload("res://scenes/blocks/pillars.tscn"),
-	#preload("res://scenes/blocks/pyramid.tscn"),
-	#preload("res://scenes/blocks/plank.tscn"),
 	preload("res://scenes/blocks/4pillars.tscn"),
 	preload("res://scenes/blocks/floor.tscn"),
 ]
-const BLOCK_ICONS: Array[Texture2D] = [
+const block_icons: Array[Texture2D] = [
 	preload("res://assets/blocks/block.png"),  
 	preload("res://assets/blocks/pillar.png"),
-	#preload("res://assets/blocks/pyramid.png"),
-	#preload("res://assets/blocks/plank.png"),
 	preload("res://assets/blocks/plank.png"),
 	preload("res://assets/blocks/floor.png"),
+]
+const missile_icons: Array[Texture2D] = [
+	preload("res://assets/blocks/fireball.png"),
 ]	
+var BLOCK_ICONS: Array[Texture2D] = []
 var costs_for_rise = [150, 300, 1200, 750]
 var costs_for_ruin = [750]
 var costs

@@ -8,14 +8,7 @@ extends Control
 @onready var settings_icon = $"CanvasLayer/SettingsIcon"
 @onready var controls_display = $"%ControlsDisplay"
 @onready var timer = $"%Timer"
-const CONTROLS_TEXT = """
-[b]CONTROLS:[/b]
--------------------
-[color=yellow]Toggle Menu:[/color] [b]F1[/b]
-[color=yellow]Place Block:[/color] Right Click
-[b]Break Block:[/b] Left Click
-[b]Movement:[/b] WASD
-"""
+@onready var username = $CanvasLayer/username
 func _ready():
 	GameData.money_changed.connect(_on_money_changed)
 	GameData.display_message.connect(show_message)
@@ -23,6 +16,7 @@ func _ready():
 	if is_instance_valid(settings_icon):
 		print("Settings Icon Global Position: ", settings_icon.global_position)
 	GameData.hud = self
+	username.text = "Opponent: " + GameState.opponent_id.get_slice("$", 0)
 	
 func _unhandled_input(event):
 	# 🚩 NEW FUNCTION: Check for the custom keyboard action
