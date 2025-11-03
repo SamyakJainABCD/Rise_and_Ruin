@@ -33,8 +33,15 @@ var money: int = 0:
 	set(value):
 		money = max(0, value) # Ensure money never goes below zero
 		money_changed.emit(money)
+		
+		
+
 
 # --- Core Logic ---
+
+func new_match():
+	costs = []
+	
 
 func _ready():
 	# 1. Give the user starting money when the game starts

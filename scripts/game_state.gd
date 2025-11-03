@@ -21,6 +21,15 @@ var block_scenes := [
 	preload("res://scenes/blocks/plank.tscn"),
 ]
 
+func new_match():
+	player_id = str(randi())
+	match_id = ""
+	opponent_id = ""
+	job = ""
+	finding_match = false
+	opponent_block_list = []
+	highest_point_of_opponent_tower = 0
+
 func _ready():
 	randomize()
 	add_child(http_request)
@@ -76,8 +85,8 @@ func fetch_opponent_data() -> void:
 
 # --- GENERAL HTTP RESPONSE HANDLER ---
 func _on_request_completed(_result, _response_code, _headers, body):
+	print(body)
 	var json = JSON.new()
-	print(json)
 	var err = json.parse(body.get_string_from_utf8())
 	if err != OK:
 		print("Failed to parse response")

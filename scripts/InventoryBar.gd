@@ -20,8 +20,8 @@ func _setup_initial_slots():
 	for child in slots_container.get_children():
 		child.queue_free()
 	slots.clear() 
-	if GameData.costs == GameData.costs_for_ruin or not GameData.costs:
-		return
+	#if GameData.costs == GameData.costs_for_ruin or not GameData.costs:
+		#return
 
 	# We need 6 slots (matching the 6 blocks in GameData)
 	while not GameData.costs:

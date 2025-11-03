@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxb42y85uwmkq"]
+
+[ext_resource type="PackedScene" uid="uid://dnpki43odve3j" path="res://scenes/fenc.tscn" id="1_tphf0"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="cerca" parent="." instance=ExtResource("1_tphf0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+
+[node name="cerca2" parent="." instance=ExtResource("1_tphf0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="cerca3" parent="." instance=ExtResource("1_tphf0")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 10)
+
+[node name="cerca11" parent="." instance=ExtResource("1_tphf0")]
+transform = Transform3D(0.5372996, 0, 0.8433915, 0, 1, 0, -0.8433915, 0, 0.5372996, -4.93575, 0, 8.49907)
+
+[node name="cerca12" parent="." instance=ExtResource("1_tphf0")]
+transform = Transform3D(0.5372996, 0, 0.8433915, 0, 1, 0, -0.8433915, 0, 0.5372996, 4.906887, 0, -8.530718)
+
+[node name="cerca4" parent="." instance=ExtResource("1_tphf0")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -10)
+
+[node name="cerca5" parent="." instance=ExtResource("1_tphf0")]
+transform = Transform3D(0.84339136, 0, -0.5372996, 0, 1, 0, 0.5372996, 0, 0.84339136, -8.586306, 0, -4.869379)
+
+[node name="cerca10" parent="." instance=ExtResource("1_tphf0")]
+transform = Transform3D(-0.8433913, 0, 0.5372996, 0, 1, 0, -0.5372996, 0, -0.8433913, 8.546755, 0, 4.909491)
+
+[node name="cerca6" parent="." instance=ExtResource("1_tphf0")]
+transform = Transform3D(0.5372996, 0, -0.8433915, 0, 1, 0, 0.8433915, 0, 0.5372996, -4.922291, 0, -8.639221)
+
+[node name="cerca7" parent="." instance=ExtResource("1_tphf0")]
+transform = Transform3D(0.8433914, 0, 0.53729963, 0, 1, 0, -0.53729963, 0, 0.8433914, -8.61525, 0, 4.8499575)
+
+[node name="cerca9" parent="." instance=ExtResource("1_tphf0")]
+transform = Transform3D(0.8433914, 0, 0.53729963, 0, 1, 0, -0.53729963, 0, 0.8433914, 8.566198, 0, -4.867994)
+
+[node name="cerca8" parent="." instance=ExtResource("1_tphf0")]
+transform = Transform3D(-0.53729963, 0, 0.8433914, 0, 1, 0, -0.8433914, 0, -0.53729963, 4.9086475, 0, 8.574331)

@@ -1,13 +1,61 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpikvqi2qk8k2"]
+[gd_scene load_steps=4 format=3 uid="uid://cpikvqi2qk8k2"]
 
 [ext_resource type="Script" uid="uid://d4cqmwpd1udh0" path="res://scripts/waiting.gd" id="1_4tkn2"]
+[ext_resource type="Texture2D" uid="uid://blw5ivqry2gln" path="res://assets/waiting.jpg" id="2_ei1sg"]
+[ext_resource type="FontFile" uid="uid://c7i2obseqpygb" path="res://scenes/ui/diego3d.ttf" id="3_ei1sg"]
 
 [node name="waiting" type="Node2D"]
 script = ExtResource("1_4tkn2")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 478.0
-offset_top = 205.0
-offset_right = 548.0
-offset_bottom = 228.0
-text = "waiting..."
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_ei1sg")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/BoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+color = Color(0, 0, 0, 0.5176471)
+
+[node name="Label" type="Label" parent="CanvasLayer/BoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -529.0
+offset_top = -382.0
+offset_right = 569.0
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(3.1284987e-06, 0.7318923, 0.09014911, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.49803922)
+theme_override_colors/font_outline_color = Color(0.41598046, 0.41598043, 0.4159804, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("3_ei1sg")
+theme_override_font_sizes/font_size = 80
+text = "WAITING...
+"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -5,7 +5,6 @@ extends Control
 # This property name MUST match the unique name (%) you set on your Label node.
 @onready var money_label = $"%MoneyLabel" 
 @onready var message_label = $"%MessageLabel"
-@onready var settings_panel = $"%SettingsPanel"
 @onready var settings_icon = $"CanvasLayer/SettingsIcon"
 @onready var controls_display = $"%ControlsDisplay"
 @onready var timer = $"%Timer"
@@ -58,6 +57,8 @@ func show_message(text: String, duration: float = 2.0):
 
 
 func start_timer(time):
+	if time<0:
+		return
 	timer.text=str(time)
 	if get_tree():
 		await get_tree().create_timer(1).timeout
